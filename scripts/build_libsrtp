@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd /home/vagrant/libsrtp
+./configure --prefix=/usr --enable-openssl
+make shared_library && sudo make install
+

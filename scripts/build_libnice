@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd /home/vagrant/libnice
+
+./autogen.sh
+./configure --prefix=/usr
+make && sudo make install
+

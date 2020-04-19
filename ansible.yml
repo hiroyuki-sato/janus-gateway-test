@@ -1,0 +1,96 @@
+# https://github.com/meetecho/janus-gateway
+- hosts: default
+  become: true
+  tasks:
+  - name: step1
+    apt:
+      update_cache: yes
+      pkg:
+      - 'build-essential'
+      - libmicrohttpd-dev
+      - libmicrohttpd-dev
+      - libjansson-dev
+      - libssl-dev
+      - libsrtp-dev
+      - libsofia-sip-ua-dev
+      - libglib2.0-dev
+      - libopus-dev
+      - libogg-dev
+      - libcurl4-openssl-dev
+      - liblua5.3-dev
+      - libconfig-dev
+      - pkg-config
+      - gengetopt
+      - libtool
+      - automake
+
+      - gtk-doc-tools
+
+      #
+      - libnanomsg-dev
+      - doxygen
+      - graphviz
+      #
+      - cmake
+      #
+      - golang-go # boringssl
+      #
+      - coturn # TURN server
+      
+
+  - name: step2 git clone libnice
+    git:
+      repo: https://gitlab.freedesktop.org/libnice/libnice
+      dest: /home/vagrant/libnice_git
+    become: no
+
+#  - name: step3 git clone libsrtp v1.5.4
+#    git:
+#      repo: https://github.com/cisco/libsrtp
+#      dest: /home/vagrant/libsrtp
+#      version: v1.5.4
+#    become: no
+
+  - name: step3 git clone libsrtp v2.3.0
+    git:
+      repo: https://github.com/cisco/libsrtp
+      dest: /home/vagrant/libsrtp
+      version: v2.3.0
+    become: no
+
+  - name: step3 git clone boringssl
+    git:
+      repo: https://boringssl.googlesource.com/boringssl
+      dest: /home/vagrant/boringssl
+    become: no
+
+  - name: step3 git clone usrsctp
+    git:
+      repo: https://github.com/sctplab/usrsctp
+      dest: /home/vagrant/usrsctp
+    become: no
+
+  - name: step3 git clone libwebsockets
+    git:
+#      repo: https://libwebsockets.org/repo/libwebsockets
+      repo: https://github.com/warmcat/libwebsockets.git
+      dest: /home/vagrant/libwebsockets
+    become: no
+
+  - name: step3 git clone paho.mqtt.c
+    git:
+      repo: https://github.com/eclipse/paho.mqtt.c.git
+      dest: /home/vagrant/paho.mqtt.c
+    become: no
+
+  - name: step3 git clone paho.mqtt.c
+    git:
+      repo: https://github.com/alanxz/rabbitmq-c
+      dest: /home/vagrant/rabbitmq-c
+    become: no
+
+  - name: step3 git clone paho.mqtt.c
+    git:
+      repo: https://github.com/meetecho/janus-gateway.git
+      dest: /home/vagrant/janus-gateway
+    become: no

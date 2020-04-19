@@ -1,0 +1,18 @@
+#!/bin/sh
+
+cd /home/vagrant/boringssl
+# Don't barf on errors
+sed -i s/" -Werror"//g CMakeLists.txt
+# Build
+mkdir -p build
+cd build
+cmake -DCMAKE_CXX_FLAGS="-lrt" ..
+make
+cd ..
+# Install
+sudo mkdir -p /opt/boringssl
+sudo cp -R include /opt/boringssl/
+sudo mkdir -p /opt/boringssl/lib
+sudo cp build/ssl/libssl.a /opt/boringssl/lib/
+sudo cp build/crypto/libcrypto.a /opt/boringssl/lib/
+

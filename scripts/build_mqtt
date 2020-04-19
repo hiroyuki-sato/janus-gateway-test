@@ -1,0 +1,5 @@
+#!/bin/sh
+
+cd /home/vagrant/paho.mqtt.c
+make && sudo make install
+
